@@ -1,8 +1,7 @@
-import { Effect, ImmerReducer, Reducer, Subscription } from 'umi';
+import { Effect, Reducer, Subscription } from 'umi';
 import { getList, editUser, deleteUser, addUser } from './service'
 import { message } from 'antd'
 import { singleUserType } from './data.d'
-import users from '.';
 export interface UserState {
   data: singleUserType[],
   meta: {
@@ -55,41 +54,6 @@ const UserModel: UserModelType = {
       }
 
     },
-    // *add({ payload: { values } }, { call, put ,select}) {
-    //   console.log(values);
-    //   const result = yield call(addUser, { values })
-    //   const { page, per_page } = yield select(state => state.users.meta)
-    //   if (result) {
-    //    // message.success("添加成功")
-    //     yield put({
-    //       type: 'query',
-    //       payload:{
-    //         page,
-    //         per_page
-    //       }
-    //     })
-    //   } else {
-    //     //message.error("添加失败")
-    //   }
-    // },
-    // *edit({ payload: { id, values } }, { call, put, select}) {
-    //   //console.log(id,values);
-    //   const result = yield call(editUser, { id, values })
-    //   const { page, per_page } = yield select(state => state.users.meta)
-    //   //console.log(result);
-    //   if (result) {
-    //     message.success('编辑成功');
-    //     yield put({
-    //       type: 'query',
-    //       payload: {
-    //         page,
-    //         per_page
-    //       }
-    //     })
-    //   } else {
-    //     message.error('编辑失败')
-    //   }
-    // },
     *delete({ payload: { id } }, { call, put, select }) {
       //console.log(id,values);
       const result = yield call(deleteUser, { id })
